@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block 'title' %}  {% endblock %}</title>'
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+{% block 'content' %}
+
+{% endblock %}
+
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ <script>
+tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  plugins: 'table wordcount',
+  setup: function (editor) {
+    editor.on('change', function (e) {
+        editor.save();
+        });
+    },
+  content_style: '.left { text-align: left; } ' +
+    'img.left { float: left; } ' +
+    'table.left { float: left; } ' +
+    '.right { text-align: right; } ' +
+    'img.right { float: right; } ' +
+    'table.right { float: right; } ' +
+    '.center { text-align: center; } ' +
+    'img.center { display: block; margin: 0 auto; } ' +
+    'table.center { display: block; margin: 0 auto; } ' +
+    '.full { text-align: justify; } ' +
+    'img.full { display: block; margin: 0 auto; } ' +
+    'table.full { display: block; margin: 0 auto; } ' +
+    '.bold { font-weight: bold; } ' +
+    '.italic { font-style: italic; } ' +
+    '.underline { text-decoration: underline; } ' +
+    '.example1 {} ' +
+    'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }' +
+    '.tablerow1 { background-color: #D3D3D3; }',
+  formats: {
+    alignleft: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', classes: 'left' },
+    aligncenter: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', classes: 'center' },
+    alignright: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', classes: 'right' },
+    alignfull: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', classes: 'full' },
+    bold: { inline: 'span', classes: 'bold' },
+    italic: { inline: 'span', classes: 'italic' },
+    underline: { inline: 'span', classes: 'underline', exact: true },
+    strikethrough: { inline: 'del' },
+    customformat: { inline: 'span', styles: { color: '#00ff00', fontSize: '20px' }, attributes: { title: 'My custom format'} , classes: 'example1'}
+  },
+  style_formats: [
+    { title: 'Custom format', format: 'customformat' },
+    { title: 'Align left', format: 'alignleft' },
+    { title: 'Align center', format: 'aligncenter' },
+    { title: 'Align right', format: 'alignright' },
+    { title: 'Align full', format: 'alignfull' },
+    { title: 'Bold text', inline: 'strong' },
+    { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+    { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+    { title: 'Badge', inline: 'span', styles: { display: 'inline-block', border: '1px solid #2276d2', 'border-radius': '5px', padding: '2px 5px', margin: '0 2px', color: '#2276d2' } },
+    { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' },
+    { title: 'Image formats' },
+    { title: 'Image Left', selector: 'img', styles: { 'float': 'left', 'margin': '0 10px 0 10px' } },
+    { title: 'Image Right', selector: 'img', styles: { 'float': 'right', 'margin': '0 0 10px 10px' } },
+  ]
+});
+
+
+
+    </script>
+
+</body>
+</html>
